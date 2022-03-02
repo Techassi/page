@@ -1,6 +1,11 @@
 baseurl = "/"
 languageCode = "en-us"
 theme = "term"
+title = "techassi.dev"
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 2
 
 [menu]
 [[menu.main]]

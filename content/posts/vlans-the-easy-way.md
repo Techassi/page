@@ -3,7 +3,7 @@ title: "VLANs - The easy way"
 date: "2022-02-24T15:31:31+01:00"
 author: "Techassi"
 cover: ""
-tags: ["vlan", "opnsense"]
+tags: ["vlan", "opnsense", "proxmox"]
 keywords: ["", ""]
 description: As a beginner it can be quite hard to find useful information on how to effectivly setup virtual networks.
   A few months back I struggled with these exact same issues. So can VLANs be hard? - Yes. Do they need to be? - 
@@ -28,6 +28,13 @@ to be? - Probably not.
 ## What are VLANs
 
 But before we dive into the setup of VLANs, we should probably explain what VLANs are and for what they are useful for.
+
+- **Tagged:** If the port is set to `Tagged` only tagged packets can pass. This means, that only packets which are
+  prepended by a VLAN Tag (ID) are allowed to continue. This mode is used to forward traffic to other network components
+  which can correctly handle tagged traffic.
+- **Untagged:** Most end devices (like PCs) don't understand tagged packets. Because of that every port which is
+  configured as `Untagged` removes the VLAN tag before passing to packets trough the port to the connected device.
+  That's why these kind of ports are also called `Access Ports`.
 
 ## Which VLANs do I need?
 
@@ -111,4 +118,50 @@ components besides the router, firewall and wireless access points (WAPs). -->
 
 Today pretty much every device understands the concept of VLAN (See 802.1q). On the other hand most common entry-level
 switches don't provide the required software to manage and configure VLANs on these devices. When on the hunt for new
-switches always look out for the term **Managed**.
+switches always look out for the term **Managed**. I can personally recommend Mikrotik switches, as they are affordable
+and have a great feature selection. As the time of writing I use the `CRS328-24P-4S+RM` as a core switch.
+
+The router (or firewall) is the next most important component which has to be compatible with VLANs, especially if you
+want to use it as a router-on-a-stick. There are two methods on how to setup the VLANs and the routing between them,
+also called inter-VLAN routing. Either your switches support VLAN routing (which means they have dedicated harware to
+route VLAN-tagged packets) or your router does all the routing (Router-on-a-stick). Usually the second method is easier
+to setup. I currently use OPNsense as my firewall which runs inside a VM managed by Proxmox. OPNsense pretty much runs
+on every hardware, probably even on a toaster. The VM uses 4 virtualized cores and 4 GB of memory and has access to 2
+physical RJ45 network interfaces which both support 10 GbE (Intel X550-AT2). One is used as the WAN interface and the
+second one provides the virtual interfaces for all VLANs.
+
+## Setting up VLANs
+
+Let's finally dive into the setup. I use the router-on-a-stick method which means we have to setup the VLANs (and the
+routing) on our firewall. In OPNsense this is straight forward:
+
+### Creating VLAN interfaces in OPNsense
+
+First navigate to `Interfaces > Other Types > VLAN`. A new VLAN can be added with the + Button on the top right side. As
+the parent interface you should select the LAN interface (e.g. `vtnet0`). The next 3 fields are pretty straigt forward.
+Choose the VLAN tag to use (see list above), the priority can be set to 0 (default) and the description should provide
+information what the VLAN is used for. You can repeat this process for every VLAN you want to add.
+
+After the virtual interfaces have been added we have to assign them. This can be done by navigation to
+`Interfaces > Assignments`. To assign an interface provide a description and confirm with pressing the + Button on the
+right hand side.
+
+### Configure VLANs on your switches
+
+Some switches support port-based and 801.2q based VLAN configurations. The 801.2q method is recommended. As a first step
+the configured VLANs (from the previous step) need to be added on the switch as well. On Mikrotik devices running SwOS
+this can be done under the tab `VLANs`. After adding all VLANs individual ports con be configured. There are two steps
+involved: Setting the VLAN configuration for *outgoing* and *incoming* traffic. A few examples on hwo to configure ports
+based on the desired usage:
+
+- **Access Port:** Most of the time you want to configure a port as an `Access Port` which removes the prepended VLAN
+  tag and passes the traffic down the wire to the connected end device (like a PC). Access Ports are used if you want to
+  connect devices like WAPs, PCs, TVs or CCTV cams.
+- **Tagged Port:** A port with only a single tagged VLAN only carries packets with the configured VLAN ID. This is used
+  if the port connects to an additional network device (like a switch).
+- **Trunk Port:** A trunk port can carry traffic with multiple VLAN IDs. Basically the port is a member of multiple
+  VLANs. This mode is used to carry multiple VLANs accross network devices.
+
+Some switches require one additional configuration step. Higher end switches automatically tag incoming untagged traffic
+with the configured VLAN ID on ports with are configured as `Untagged`. On mid end switches this behaviour needs to be
+explicitly configured with the PVID (Port VLAN identifier). Just add the port as a member of the same VLAN.
