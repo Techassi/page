@@ -9,8 +9,7 @@
   <link rel="canonical" href="{{ .Permalink }}" />
   <link rel="stylesheet" href="{{ "css/style.min.css" | absURL }}">
   {{ if eq .Section "posts" }}
-  {{ $css := resources.Get "css/single.css" }}
-  {{ $style := $css | resources.Minify }}
+  {{ $style := resources.Get "scss/single.scss" | toCSS | minify }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">
   {{ end }}
 

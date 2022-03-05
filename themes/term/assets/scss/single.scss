@@ -1,0 +1,101 @@
+article {
+  h2, h3, h4 {
+    font-weight: 700;
+    margin-bottom: 32px;
+    margin-top: 32px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3, h4 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  h4 {
+    font-weight: 400;
+  }
+
+  p {
+    line-height: 2rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  :where(h2 + *) {
+    margin-top: 0 !important;
+  }
+
+  ul {
+    padding-left: 1rem;
+    list-style-type: none;
+    line-height: 2rem;
+
+    li {
+      position: relative;
+
+      &::before {
+        content: "-";
+        position: absolute;
+        left: -1rem;
+        color: rgb(34, 211, 238);
+      }
+    }
+  }
+
+  code {
+    background-color: rgba(34, 211, 238, 0.1);
+    color: rgb(34, 211, 238);
+    padding: 1px 4px;
+    border-radius: 0.25rem;
+  }
+
+  pre {
+    background-color: rgba(75, 85, 99, 0.1);
+    border: 1px solid rgb(75, 85, 99);
+    border-radius: 0.25rem;
+    padding: 16px;
+
+    code {
+      color: rgba(191, 189, 182, 0.7);
+      background-color: initial;
+    }
+  }
+
+  .hanchor {
+    margin-left: 1rem;
+
+    &:hover {
+      color: rgb(34, 211, 238);
+    }
+  }
+}
+
+#TableOfContents {
+  ul {
+    line-height: 2rem;
+    margin-left: 1.5rem;
+
+    li {
+      position: relative;
+
+      &::before {
+        content: "-";
+        position: absolute;
+        left: -1rem;
+        color: rgb(34, 211, 238);
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
