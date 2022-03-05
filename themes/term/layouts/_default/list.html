@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="w-[850px] mx-auto my-0 font-mono text-light">
+  <div class="mt-32">
+    <div class="flex items-center">
+      {{- partial "terminal-line.html" (dict "cmd" "cat" "dir" (printf "./%s.txt" .Section) "cursor" true) -}}
+    </div>
+    <ul class="leading-10">
+      {{ $isFirst := false }}
+      {{ range .Pages }}
+      <li>
+        <a href="{{.Permalink}}" class="hover:underline">[{{.Date.Format "2006-01-02"}}] {{.Title}}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}

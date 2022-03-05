@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="w-[850px] mx-auto my-0 font-mono text-light mt-32">
+  <div class="welcome">
+    <h1 class="text-3xl">Hey there <span class="animate-duration-1500 animate-loop inline-block">👋</span></h1>
+    <p class="mt-8 max-w-2/3 text-xl leading-8">
+      I'm a student, freelancer and tinkerer working on a few small projects and trying new things in Go, Vue and
+      Typescript.
+    </p>
+  </div>
+  <div class="latest mt-32">
+    {{- partial "terminal-line.html" (dict "cmd" "head -n 1" "dir" "./posts.txt" "cursor" true) -}}
+    {{ range ( where .Site.RegularPages "Type" "posts" | first 1 ) }}
+    <div class="max-w-2/3">
+      {{- partial "post-summary.html" . -}}
+    </div>
+    {{end}}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,7 @@
+<div class="flex items-center mb-12">
+  <img src="{{ "img/caret-green.svg" | absURL }}" alt="Logo Caret">
+  <span class="ml-4 inline-block">{{ .cmd }} <span class="text-cyan-400">{{ .dir }}</span></span>
+  {{ if .cursor }}
+  <div class="h-5 w-1 bg-light animate-blink animate-duration-1500 ml-2"></div>
+  {{ end }}
+</div>

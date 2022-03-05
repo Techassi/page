@@ -1,0 +1,26 @@
+{
+  "name": "term",
+  "version": "0.0.1",
+  "description": "Hugo theme for blog.techassi.dev",
+  "scripts": {
+    "watch": "windicss ./**/*.{css,html} -f windicss.config.js -dto static/css/style.min.css",
+    "build": "windicss ./**/*.{css,html} -f windicss.config.js -mto static/css/style.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Techassi/blog-theme.git"
+  },
+  "keywords": [
+    "hugo",
+    "theme"
+  ],
+  "author": "Techassi <git@techassi.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Techassi/blog-theme/issues"
+  },
+  "homepage": "https://github.com/Techassi/blog-theme#readme",
+  "dependencies": {
+    "windicss": "^3.5.0"
+  }
+}

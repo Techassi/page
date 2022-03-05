@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="w-[850px] mx-auto my-0 font-mono text-light prose-h2:text-xl">
+  <header class="flex flex-col mt-32">
+    <div class="flex justify-between items-start">
+      <div>
+        <h1 class="text-3xl font-bold">{{ .Title }}</h1>
+        <ul class="flex">
+          {{ range .Params.tags }}
+          <li class="mr-4 text-gray-600">
+            <a href="{{ "tags" | absURL}}/{{ . | urlize }}">#{{ . }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="flex flex-col items-end font-bold">
+        <span>[{{.Date.Format "2006-01-02"}}]</span>
+        <span>{{ .Params.author }}</span>
+      </div>
+    </div>
+    <div class="mt-12">
+      {{- partial "terminal-line.html" (dict "cmd" "cat" "dir" (printf ".%stoc.txt" .RelPermalink) "cursor" true) -}}
+      {{ .TableOfContents }}
+    </div>
+  </header>
+  <article class="mt-12">
+    {{- .Content | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor text-gray-600" ariaLabel="Anchor">#</a> ${3}` | safeHTML -}}
+  </article>
+</div>
+{{ end }}

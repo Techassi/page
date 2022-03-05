@@ -1,0 +1,25 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{ block "title" . }}
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} :: {{ .Site.Title }}{{ end }}</title>
+  {{ end }}
+
+  <link rel="canonical" href="{{ .Permalink }}" />
+  <link rel="stylesheet" href="{{ "css/style.min.css" | absURL }}">
+  {{ if eq .Section "posts" }}
+  {{ $css := resources.Get "css/single.css" }}
+  {{ $style := $css | resources.Minify }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ end }}
+
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+  <meta property="og:description" content="{{ .Params.description }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ $.Site.Title }}" />
+  {{ if isset .Params "date" }}
+  <meta property="article:published_time" content="{{ time .Date }}" />
+  {{ end }}
+</head>
