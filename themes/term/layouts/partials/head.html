@@ -7,7 +7,11 @@
   {{ end }}
 
   <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{ $style := resources.Get "scss/fonts.scss" | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
   <link rel="stylesheet" href="{{ "css/style.min.css" | absURL }}">
+
   {{ if eq .Section "posts" }}
   {{ $style := resources.Get "scss/single.scss" | toCSS | minify }}
   <link rel="stylesheet" href="{{ $style.Permalink }}">

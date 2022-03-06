@@ -8,7 +8,7 @@ module.exports = defineConfig({
         'dark': '#0B0E14'
       },
       fontFamily: {
-        mono: ['JetBrainsMono NF']
+        mono: ['JetBrainsMono']
       },
       animation: {
         blink: 'blink 1s linear infinite'
@@ -22,10 +22,6 @@ module.exports = defineConfig({
     }
   },
   extract: {
-    exclude: ['node_modules', '.git', 'static/css/style.min.css']
+    exclude: ['node_modules', '.git']
   },
-  safelist: 'active-link',
-  alias: {
-    'active-item': 'text-orange-500'
-  }
 });
