@@ -1,5 +1,9 @@
 resources/
 public/
 
+# Local secrets
+.secrets
+private_key
+
 *.lock
 *.log
