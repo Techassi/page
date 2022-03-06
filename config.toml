@@ -18,4 +18,4 @@ title = "techassi.dev"
   identifier = 'about'
   name = 'about'
   title = 'This is the about section'
-  url = '/about/'
+  url = '/about'
