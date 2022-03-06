@@ -1,0 +1,40 @@
+name: Build page
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 6.28.0
+      - name: Install nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install npm dependencies
+        run: cd themes/term && pnpm i
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+      - name: Build page
+        run: make build
+      - name: Publish page
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: public
+          remote: ${{ secrets.REMOTE_PATH }}
+          privateKey: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USER }}
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          rmRemote: true
