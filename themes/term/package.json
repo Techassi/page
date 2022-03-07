@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Hugo theme for blog.techassi.dev",
   "scripts": {
-    "watch": "windicss ./layouts/**/*.html -f windicss.config.js -dto static/css/style.min.css",
-    "build": "windicss ./layouts/**/*.html -f windicss.config.js -mto static/css/style.min.css"
+    "watch": "windicss ./layouts/**/*.html ./layouts/index.html ./layouts/404.html -f windicss.config.js -dto static/css/style.min.css",
+    "build": "windicss ./layouts/**/*.html ./layouts/index.html ./layouts/404.html -f windicss.config.js -mto static/css/style.min.css"
   },
   "repository": {
     "type": "git",
