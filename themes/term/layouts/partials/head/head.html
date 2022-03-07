@@ -1,0 +1,15 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{ block "title" . }}
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{- partial "head/favicon.html" . -}}
+
+  {{- partial "head/styles.html" . -}}
+
+  {{- partial "head/ogp.html" . -}}
+</head>
