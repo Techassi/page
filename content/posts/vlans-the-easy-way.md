@@ -28,6 +28,17 @@ to be? - Probably not.
 ## What are VLANs?
 
 But before we dive into the setup of VLANs, we should probably explain what VLANs are and for what they are useful for.
+The easy way of explaining them is to say that they provide one or more **virtual** networks on top of a **single**
+physical network. This allows users to separate networks on a virtual and not a physical level (which would require
+multiple sets of cabling and network equipment).
+
+"But how can we keep network traffic separated on a single network?" you may ask. This is achieved by tagging network
+packets (usually layer 2 in the OSI model) with unique IDs. Each ID marks traffic of one virtual network. The used
+network equipment has to be able to understand these tags. See more about hardware selection in
+[this](#choosing-compatible-hardware) section.
+
+A core concept to understand is the VLAN mode the physical interface (port) operates in. A port can be **tagged** or
+**untagged**:
 
 - **Tagged:** If the port is set to `Tagged` only tagged packets can pass. This means, that only packets which are
   prepended by a VLAN Tag (ID) are allowed to continue. This mode is used to forward traffic to other network components
