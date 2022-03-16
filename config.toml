@@ -6,6 +6,8 @@ title = "techassi.dev"
 [markup]
   [markup.tableOfContents]
     endLevel = 2
+  [markup.highlight]
+    noClasses = false
 
 [menu]
 [[menu.main]]
