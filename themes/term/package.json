@@ -4,7 +4,9 @@
   "description": "Hugo theme for blog.techassi.dev",
   "scripts": {
     "watch": "windicss ./layouts/**/*.html ./layouts/index.html ./layouts/404.html -f windicss.config.js -dto static/css/style.min.css",
-    "build": "windicss ./layouts/**/*.html ./layouts/index.html ./layouts/404.html -f windicss.config.js -mto static/css/style.min.css"
+    "build": "windicss ./layouts/**/*.html ./layouts/index.html ./layouts/404.html -f windicss.config.js -mto static/css/style.min.css",
+    "lint:fix": "markdownlint --config ./markdownlint.json --fix ../../content/posts/**/*.md",
+    "lint": "markdownlint --config ./markdownlint.json ../../content/posts/**/*.md"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,8 @@
   "homepage": "https://github.com/Techassi/blog-theme#readme",
   "dependencies": {
     "windicss": "^3.5.0"
+  },
+  "devDependencies": {
+    "markdownlint-cli": "^0.31.1"
   }
 }
