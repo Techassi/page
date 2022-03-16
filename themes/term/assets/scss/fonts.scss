@@ -1,13 +1,9 @@
+/* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/jbm-regular.woff2") format("woff2"),
-       local("JetBrainsMono");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/jbm-bold.woff2") format("woff2"),
-       local("JetBrainsMono");
-  font-weight: 700;
+  font-family: 'Recursive';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('/fonts/recursive-vf.woff2') format('woff2');
+  unicode-range: U+0020-007F,U+00A9,U+2190-2193,U+2018,U+2019,U+201C,U+201D,U+2022;
 }

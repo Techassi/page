@@ -8,7 +8,8 @@ module.exports = defineConfig({
         'dark': '#0B0E14'
       },
       fontFamily: {
-        mono: ['JetBrainsMono']
+        mono: ['Recursive'],
+        sans: ['Recursive']
       },
       animation: {
         blink: 'blink 1s linear infinite'
@@ -24,4 +25,14 @@ module.exports = defineConfig({
   extract: {
     exclude: ['node_modules', '.git']
   },
+  shortcuts: {
+    'font-mono': {
+      '@apply': 'font-mono',
+      'font-variation-settings': '"MONO" 1, "CASL" 0, "slnt" 0, "CRSV" 0.5'
+    },
+    'font-sans': {
+      '@apply': 'font-sans',
+      'font-variation-settings': '"MONO" 0, "CASL" 0, "slnt" 0, "CRSV" 0.5'
+    }
+  }
 });
