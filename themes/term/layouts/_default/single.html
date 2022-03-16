@@ -23,7 +23,7 @@
     </div>
   </header>
   <article class="mt-12">
-    {{- .Content | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor text-gray-600" ariaLabel="Anchor">#</a> ${3}` | safeHTML -}}
+    {{- .Content -}}
   </article>
 </div>
 {{ end }}

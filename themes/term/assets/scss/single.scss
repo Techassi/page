@@ -29,7 +29,7 @@ article {
     margin-bottom: 0.75rem;
   }
 
-  a, a:visited {
+  a {
     color: rgb(34, 211, 238);
   }
 
@@ -70,6 +70,7 @@ article {
     code {
       color: rgba(191, 189, 182, 0.7);
       background-color: initial;
+      padding: 0;
     }
   }
 
