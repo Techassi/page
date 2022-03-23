@@ -1,5 +1,6 @@
 <a href="{{ .Permalink }}" class="font-bold hover:underline">[{{.Date.Format "2006-01-02"}}] {{ .Title }}</a>
 {{ if .Description }}
 <p class="mt-4 mb-4 leading-8 block">{{ .Description }}</p>
-<a href="{{ .Permalink }}" class="hover:bg-light hover:text-dark">--more--</a>
+<a href="{{ .Permalink }}"
+  class="bg-light text-dark lg:text-light lg:bg-transparent lg:hover:bg-light lg:hover:text-dark">--more--</a>
 {{ end }}
