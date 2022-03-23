@@ -249,14 +249,16 @@ This can be done by first installing the required plugin by navigating to `Syste
 `os-mdns-repeater`. After that a new menu point MDNS Repeater under Services should appear. Enable it and select all
 VLANs where traffic should be forwarded.
 
-## Setting up firewall rules
+## Example Network
 
-The blog post isn't about firewall rules. But I still want to provide some basic examples how you can use firewall rules
-in OPNsense to control data flow between VLANs. This proccess is called inter-VLAN routing.
+{{< figure src="/img/example_network.svg" class="w-full" >}}
 
 ## Conclusion
 
-This is the end. You now should be equipped with the right knowledge to setup VLANs in your home network. If you have
-feedback please contact me via e-mail or on Twitter.
+This is the end, thank you very much for reading. You should now be equipped with the right knowledge to setup VLANs in
+your home network. If you have any feedback please contact me via Reddit or Twitter.
 
-Look out for an upcoming blog post about firewall rules and inter-VLAN routing!
+Also let me know if you are interested in other topics. A few examples are: Proxmox (and VMs) or monitoring with Icinga,
+Grafana and Telegraf.
+
+Look out for an upcoming blog post about firewall rules and inter-VLAN routing in OPNsense!

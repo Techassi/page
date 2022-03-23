@@ -66,6 +66,7 @@ article {
     border: 1px solid rgb(75, 85, 99);
     border-radius: 0.25rem;
     padding: 16px;
+    overflow-x: auto;
 
     code {
       color: rgba(191, 189, 182, 0.7);
@@ -79,6 +80,12 @@ article {
 
     &:hover {
       color: rgb(34, 211, 238);
+    }
+  }
+
+  figure.w-full {
+    img {
+      width: 100%;
     }
   }
 }
