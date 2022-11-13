@@ -1,6 +1,11 @@
 name: Build page
 on:
-  push
+  push:
+    paths:
+      - '**.md'
+      - '**.html'
+      - '**.svg'
+      - '!README.md'
 
 jobs:
   build:
