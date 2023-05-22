@@ -5,6 +5,8 @@ on:
       - '**.md'
       - '**.html'
       - '**.svg'
+      - 'static/**'
+      - '.github/workflows/**'
       - '!README.md'
 
 jobs:
