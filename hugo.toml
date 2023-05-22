@@ -3,6 +3,8 @@ languageCode = "en-us"
 theme = "term"
 title = "techassi.dev"
 
+enableRobotsTXT = false
+
 [markup]
   [markup.tableOfContents]
     endLevel = 2
