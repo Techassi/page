@@ -1,5 +1,8 @@
 article {
-  h2, h3, h4 {
+
+  h2,
+  h3,
+  h4 {
     font-weight: 700;
     margin-bottom: 32px;
     margin-top: 32px;
@@ -14,7 +17,8 @@ article {
     }
   }
 
-  h3, h4 {
+  h3,
+  h4 {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
@@ -30,7 +34,7 @@ article {
   }
 
   a {
-    color: rgb(34, 211, 238);
+    color: #BC5215;
   }
 
   :where(h2 + *) {
@@ -49,24 +53,27 @@ article {
         content: "-";
         position: absolute;
         left: -1rem;
-        color: rgb(34, 211, 238);
+        color: #BC5215;
       }
     }
   }
 
   code {
-    background-color: rgba(34, 211, 238, 0.1);
-    color: rgb(34, 211, 238);
+    background-color: #1C1B1A;
+    color: #BC5215;
     padding: 1px 4px;
     border-radius: 0.25rem;
   }
 
   pre {
-    background-color: rgba(75, 85, 99, 0.1);
-    border: 1px solid rgb(75, 85, 99);
+    background-color: #1C1B1A;
+    border: 1px solid #282726;
     border-radius: 0.25rem;
     padding: 16px;
     overflow-x: auto;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
 
     code {
       color: rgba(191, 189, 182, 0.7);
@@ -79,7 +86,7 @@ article {
     margin-left: 1rem;
 
     &:hover {
-      color: rgb(34, 211, 238);
+      color: #BC5215;
     }
   }
 
@@ -102,7 +109,7 @@ article {
         content: "-";
         position: absolute;
         left: -1rem;
-        color: rgb(34, 211, 238);
+        color: #BC5215;
       }
 
       a:hover {

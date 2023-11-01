@@ -1,12 +1,12 @@
 {{ define "main" }}
-<div class="w-full mx-auto my-0 px-4 font-sans text-light prose-h2:text-xl sm:px-8 lg:w-[850px] lg:px-0">
+<div class="w-full mx-auto my-0 px-4 font-sans text-light text-lg prose-h2:text-xl sm:px-8 lg:w-[850px] lg:px-0">
   <header class="flex flex-col mt-32">
     <div class="flex justify-between items-start flex-wrap">
       <div class="w-full sm:w-auto">
         <h1 class="text-3xl font-bold">{{ .Title }}</h1>
         <ul class="flex">
           {{ range .Params.tags }}
-          <li class="mr-4 text-gray-600">
+          <li class="mr-4 text-muted hover:text-orange">
             <a href="{{ "tags" | absURL}}/{{ . | urlize }}">#{{ . }}</a>
           </li>
           {{ end }}
@@ -22,8 +22,6 @@
       {{ .TableOfContents }}
     </div>
   </header>
-  <article class="mt-12 pb-8">
-    {{- .Content -}}
-  </article>
+  {{- partial "article.html" . -}}
 </div>
 {{ end }}

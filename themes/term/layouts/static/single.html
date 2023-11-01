@@ -1,0 +1,8 @@
+{{ define "main" }}
+<div class="w-full mx-auto my-0 px-4 font-sans text-light prose-h2:text-xl sm:px-8 lg:w-[850px] lg:px-0">
+  <header class="flex flex-col mt-32">
+    <h1 class="text-3xl font-bold">{{ .Title }}</h1>
+  </header>
+  {{- partial "article.html" . -}}
+</div>
+{{ end }}

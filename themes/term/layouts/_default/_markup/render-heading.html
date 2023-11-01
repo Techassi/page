@@ -1,3 +1,7 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}">
-  {{ .Text | safeHTML }}<a href="#{{ .Anchor | safeURL }}" class="hanchor text-gray-600">#</a>
+  {{ if (index .Attributes "no-hanchor") }}
+  {{ .Text | safeHTML }}
+  {{ else }}
+  {{ .Text | safeHTML }}<a href="#{{ .Anchor | safeURL }}" class="hanchor text-muted">#</a>
+  {{ end }}
 </h{{ .Level }}>

@@ -6,20 +6,24 @@ title = "techassi.dev"
 enableRobotsTXT = false
 
 [markup]
-  [markup.tableOfContents]
-    endLevel = 2
-  [markup.highlight]
-    noClasses = false
+[markup.goldmark.parser.attribute]
+title = true
+
+[markup.tableOfContents]
+endLevel = 2
+
+[markup.highlight]
+noClasses = false
 
 [menu]
 [[menu.main]]
-  identifier = 'posts'
-  name = 'posts'
-  title = 'This is the posts section'
-  url = '/posts/'
-  weight = 1
+identifier = 'posts'
+name = 'posts'
+title = 'This is the posts section'
+url = '/posts/'
+weight = 1
 [[menu.main]]
-  identifier = 'about'
-  name = 'about'
-  title = 'This is the about section'
-  url = '/about'
+identifier = 'about'
+name = 'about'
+title = 'This is the about section'
+url = '/about'

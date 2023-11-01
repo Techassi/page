@@ -4,12 +4,14 @@ module.exports = defineConfig({
   theme: {
     extend: {
       colors: {
-        'light': '#BFBDB6',
-        'dark': '#0B0E14'
+        'orange': '#BC5215',
+        'muted': '#343331',
+        'light': '#cecdc3',
+        'dark': '#100F0F'
       },
       fontFamily: {
-        mono: ['Recursive'],
-        sans: ['Recursive']
+        mono: ['Roboto Mono'],
+        sans: ['Bricolage Grotesque']
       },
       animation: {
         blink: 'blink 1s linear infinite'
@@ -30,9 +32,5 @@ module.exports = defineConfig({
       '@apply': 'font-mono',
       'font-variation-settings': '"MONO" 1, "CASL" 0, "slnt" 0, "CRSV" 0.5'
     },
-    'font-sans': {
-      '@apply': 'font-sans',
-      'font-variation-settings': '"MONO" 0, "CASL" 0, "slnt" 0, "CRSV" 0.5'
-    }
   }
 });
