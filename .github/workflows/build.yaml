@@ -14,29 +14,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
+          persist-credentials: false
           fetch-depth: 0
+
       - name: Install pnpm
-        uses: pnpm/action-setup@v2.1.0
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
         with:
-          version: 6.28.0
+          version: 9.12.1
+
       - name: Install nodejs
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 25.8.1
           registry-url: https://registry.npmjs.org/
+
       - name: Install npm dependencies
-        run: cd themes/term && pnpm i
+        run: cd themes/term && pnpm install
+
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f #v3.0.0
         with:
-          hugo-version: 'latest'
+          hugo-version: 'v0.159.2'
           extended: true
+
       - name: Build page
         run: make build
+
       - name: Publish page
-        uses: garygrossgarten/github-action-scp@release
+        uses: garygrossgarten/github-action-scp@ed477632dd301838ec1bf5307febbd7ff8d2962f # v0.10.0
         with:
           local: public
           remote: ${{ secrets.REMOTE_PATH }}
