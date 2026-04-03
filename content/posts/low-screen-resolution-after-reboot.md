@@ -6,7 +6,7 @@ tags: ["linux", "gpu driver", "nvidia", "dkms"]
 description: |
   Sometimes your system decides to be stuck at a super low screen resolution. These tips hopefully
   help you to troubleshoot and fix such issues.
-draft: true
+draft: false
 ---
 
 Sometimes your system decides to be stuck at a super low screen resolution (usually also only on a
